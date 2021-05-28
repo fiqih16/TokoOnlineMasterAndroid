@@ -6,20 +6,14 @@ import android.os.Bundle
 import android.widget.Toast
 import com.example.tokoonline.R
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_sign.*
 
-class LoginActivity : AppCompatActivity() {
-
-
+class SignActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_sign)
 
-        btn_Login.setOnClickListener {
-            val intent = Intent (this,SignActivity::class.java)
-            startActivity(intent)
-            Toast.makeText(this, "Sign IN " , Toast.LENGTH_SHORT).show()
-        }
-        btn_register.setOnClickListener{
+        btn_daftar.setOnClickListener{
             val intent = Intent ( this , RegisterActivity::class.java)
             startActivity(intent)
             Toast.makeText(this , "Welcome Register" , Toast.LENGTH_SHORT).show()

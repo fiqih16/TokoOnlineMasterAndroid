@@ -13,4 +13,18 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <!-- Base application theme. -->
+    <style name="Theme.MarketPlace" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
+        <item name="android:colorPrimary">@color/cool_gray900</item>
+        <item name="android:colorPrimaryDark">@color/cool_gray900</item>
+
+
+    </style>
+
+    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">#fff</item>
+        <item name="boxStrokeWidth">2dp</item>
+    </style>
 </resources>

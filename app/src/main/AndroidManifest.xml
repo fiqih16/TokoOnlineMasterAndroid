@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.tokoonline">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,10 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TokoOnline">
-        <activity android:name=".activity.BaruActivity"></activity>
-<!--        <activity-->
-<!--            android:name=".activity.MainActivity"-->
-<!--            android:label="@string/title_activity_main" />-->
+        <activity android:name=".activity.SignActivity"></activity>
+        <activity android:name=".activity.RegisterActivity" /> <!-- android:name=".activity.MainActivity" -->
+        <!-- android:label="@string/title_activity_main" /> -->
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,8 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".activity.LoginActivity"></activity>
+        <activity android:name=".activity.LoginActivity" />
     </application>
 
 </manifest>
