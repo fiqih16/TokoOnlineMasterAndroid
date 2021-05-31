@@ -37,6 +37,7 @@ class SignActivity : AppCompatActivity() {
         }
     }
 
+        //fun loginMasuk(view: View)
         fun loginMasuk() {
             val Uname   = et_email.text.toString()
             val Upass   = et_password.text.toString()

@@ -1,13 +1,12 @@
 package com.example.tokoonline.api
 
+import com.example.tokoonline.model.CategoryModel
 import com.example.tokoonline.model.DefaultResponse
 import com.example.tokoonline.model.LoginResponse
 import com.example.tokoonline.model.UserModel
+import com.google.gson.JsonObject
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiService {
     @FormUrlEncoded
@@ -25,4 +24,10 @@ interface ApiService {
         @Field("password") password: String
     ): Call<DefaultResponse>
 
+    @GET("categories")
+    fun getCategories(@Header("Authorization") authHeader:String): Call<CategoryModel>
+
+    @GET("")
+    fun getProductByCategory(@Header("Authorization") authHeader: String,
+                             @Path("categoryId") id:Int): Call<JsonObject>
 }
