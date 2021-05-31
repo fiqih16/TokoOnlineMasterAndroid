@@ -3,7 +3,7 @@ package com.example.tokoonline.model
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class UserModel (val id:Int?, val name:String, val email:String,
+data class UserModel (val id:Int, val name:String, val email:String,
                       val password:String)
 
 //{

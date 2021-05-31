@@ -9,6 +9,7 @@ import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.tokoonline.activity.LoginActivity
+import com.example.tokoonline.activity.SignActivity
 import com.example.tokoonline.fragment.AkunFragment
 import com.example.tokoonline.fragment.HomeFragment
 import com.example.tokoonline.fragment.KeranjangFragment
@@ -65,7 +66,7 @@ class MainActivity : AppCompatActivity() {
                     if (s.getStatusLogin()){
                         callFargment(2, fragmentAkun)
                     }   else {
-                        startActivity(Intent(this,LoginActivity::class.java))
+                        startActivity(Intent(this,SignActivity::class.java))
                     }
 
                 }

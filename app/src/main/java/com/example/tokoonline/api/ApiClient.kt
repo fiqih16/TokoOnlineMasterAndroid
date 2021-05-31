@@ -4,7 +4,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiClient {
-    var BASE_URL: String = "http://fiqih.teknisitik.com"
+    var BASE_URL: String = "http://fiqih.teknisitik.com/api/v1/"
     var retrofit: Retrofit? = null
 
     fun getApiClient(): Retrofit? {

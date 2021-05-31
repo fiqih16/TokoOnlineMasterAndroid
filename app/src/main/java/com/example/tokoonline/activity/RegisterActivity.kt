@@ -3,10 +3,13 @@ package com.example.tokoonline.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import com.example.tokoonline.MainActivity
 import com.example.tokoonline.R
 import com.example.tokoonline.api.ApiClient
 import com.example.tokoonline.api.ApiService
+import com.example.tokoonline.model.DefaultResponse
 import com.example.tokoonline.model.UserModel
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.activity_sign.*
@@ -28,9 +31,7 @@ class RegisterActivity : AppCompatActivity() {
 
         btn_register.setOnClickListener {
             register()
-//            val intent = Intent ( this , RegisterActivity::class.java)
-//            startActivity(intent)
-//            Toast.makeText(this , "Berhasil Daftar" , Toast.LENGTH_SHORT).show()
+
         }
 
     }
@@ -45,36 +46,37 @@ class RegisterActivity : AppCompatActivity() {
         val name = et_username.text.toString()
         val email = et_regisEmail.text.toString()
         val password = et_regisPassword.text.toString()
-        //val pass_confirm = et_confirm_password.text.toString()
+        val pass_confirm = et_confirm_password.text.toString()
 
-        if (name == "" || email == "" || password == ""){
+        if(password != pass_confirm){
+            return Toast.makeText(this,"Password tidak sesuai", Toast.LENGTH_SHORT).show()
+        }
+        if (name.isEmpty() || email.isEmpty() || password.isEmpty()){
             Toast.makeText(this,
                 "Masih ada kolom yang kosong", Toast.LENGTH_LONG).show()
         }else{
-            val newUser : UserModel = UserModel(null,name,email,password)
+
 
             var apiInterface: ApiService = ApiClient().getApiClient()!!.create(ApiService::class.java)
-            var requestCall : Call<UserModel> = apiInterface.regisUser(newUser)
+            var requestCall : Call<DefaultResponse> = apiInterface.register(name, email,password)
 
-            requestCall.enqueue(object : Callback<UserModel>{
-                override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
+            requestCall.enqueue(object : Callback<DefaultResponse>{
+                override fun onResponse(call: Call<DefaultResponse>, response: Response<DefaultResponse>) {
                     if(response.isSuccessful){
                         Toast.makeText(this@RegisterActivity,
-                            "Berhasil tersimpan", Toast.LENGTH_LONG).show()
-//                        setupListOfDataIntoRecyclerView()
-//                        et_username.setText("")
-//                        et_regisEmail.setText("")
-//                        et_regisPassword.setText("")
-//                        et_confirm_password.setText("")
+                            "Berhasil Daftar", Toast.LENGTH_LONG).show()
+                        Log.d("log", response.body()?.success.toString())
+                        val intent = Intent(this@RegisterActivity, MainActivity::class.java)
+                        startActivity(intent)
                     }else{
                         Toast.makeText(this@RegisterActivity,
                             "Gagal tersimpan", Toast.LENGTH_LONG).show()
                     }
                 }
 
-                override fun onFailure(call: Call<UserModel>, t: Throwable) {
-                    Toast.makeText(this@RegisterActivity,
-                    "Gagal tersimpan", Toast.LENGTH_LONG).show()
+                override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
+                    Toast.makeText(baseContext,
+                    "Gagal tersimpan" +t.toString(), Toast.LENGTH_LONG).show()
                 }
 
             })

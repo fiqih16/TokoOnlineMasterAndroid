@@ -8,7 +8,8 @@
     android:padding="60dp"
     android:background="@color/cool_gray900"
     android:orientation="vertical"
-    tools:context=".activity.SignActivity">
+    tools:context=".activity.SignActivity"
+    android:id="@+id/sign">
 
     <TextView
         android:layout_width="wrap_content"
@@ -26,7 +27,6 @@
         android:textStyle="bold" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/et_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -35,16 +35,15 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#fff"
             android:inputType="textEmailAddress"
-            />
+            android:textColor="#fff" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/et_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Password"
@@ -53,6 +52,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#fff"
